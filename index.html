@@ -9,449 +9,90 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="photos/favicon-32.png">
   <link rel="apple-touch-icon" href="photos/favicon.png">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="format-detection" content="telephone=no">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --white: #f8f7f4;
-      --dim: #d2d0ca;
-      --faint: #afa da6;
-      --dark: #0f0e0c;
-      --overlay-hero: rgba(0,0,0,0.38);
-      --overlay-bio: rgba(0,0,0,0.62);
-      --overlay-mid: rgba(0,0,0,0.60);
-      --overlay-heavy: rgba(0,0,0,0.72);
-      --glass: rgba(14,13,11,0.45);
-      --glass-border: rgba(255,255,255,0.12);
-    }
-
+    :root { --white: #f8f7f4; --dim: #d2d0ca; --dark: #0f0e0c; --overlay-hero: rgba(0,0,0,0.38); --overlay-bio: rgba(0,0,0,0.62); --overlay-mid: rgba(0,0,0,0.60); --overlay-heavy: rgba(0,0,0,0.72); --glass: rgba(14,13,11,0.45); --glass-border: rgba(255,255,255,0.12); }
     html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--dark);
-      color: var(--white);
-      overflow-x: hidden;
-    }
-
-    /* ── SECTION BASE ── */
-    .section {
-      position: relative;
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-    }
-    .section::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-    }
-    .section-inner {
-      position: relative;
-      z-index: 1;
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 60px 32px;
-    }
-
-    /* ── HERO ── */
-    #hero {
-      background-image: url('photos/hero.jpg');
-      background-attachment: scroll;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
-      padding: 56px 32px 0;
-    }
+    body { font-family: 'Inter', sans-serif; background: var(--dark); color: var(--white); overflow-x: hidden; }
+    .section { position: relative; background-size: cover; background-position: center; background-attachment: scroll; }
+    .section::before { content: ''; position: absolute; inset: 0; pointer-events: none; }
+    .section-inner { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; padding: 60px 32px; }
+    #hero { background-image: url('photos/hero.jpg'); min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 56px 32px 0; }
     #hero::before { background: var(--overlay-hero); }
-
-    .hero-top {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 18px;
-    }
-    .hero-logo {
-      width: 200px;
-      opacity: 0.95;
-    }
-    .hero-title {
-      font-family: 'Montserrat', sans-serif;
-      font-size: clamp(2.6rem, 8vw, 4.8rem);
-      font-weight: 900;
-      letter-spacing: 0.04em;
-      color: var(--white);
-      line-height: 1;
-    }
-    .hero-tagline {
-      font-size: clamp(0.85rem, 2.2vw, 1.05rem);
-      color: var(--dim);
-      font-style: italic;
-      max-width: 520px;
-      line-height: 1.6;
-    }
-
-    .hero-bottom {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      padding: 28px 0 36px;
-      display: flex;
-      justify-content: center;
-      gap: 32px;
-      background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 100%);
-    }
-    .social-icon {
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0.85;
-      transition: opacity 0.2s;
-    }
+    .hero-top { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 18px; }
+    .hero-logo { width: 200px; opacity: 0.95; }
+    .hero-title { font-family: 'Montserrat', sans-serif; font-size: clamp(2.6rem, 8vw, 4.8rem); font-weight: 900; letter-spacing: 0.04em; color: var(--white); line-height: 1; }
+    .hero-tagline { font-size: clamp(0.85rem, 2.2vw, 1.05rem); color: var(--dim); font-style: italic; max-width: 520px; line-height: 1.6; }
+    .hero-bottom { position: relative; z-index: 1; width: 100%; padding: 28px 0 36px; display: flex; justify-content: center; gap: 32px; background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 100%); }
+    .social-icon { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; opacity: 0.85; transition: opacity 0.2s; }
     .social-icon:hover { opacity: 1; }
-    .social-icon svg {
-      width: 32px;
-      height: 32px;
-      fill: var(--white);
-    }
-
-    /* ── SECTION LABELS ── */
-    .section-label {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: rgba(248,247,244,0.45);
-      margin-bottom: 28px;
-    }
-
-    /* ── BIO ── */
-    #bio {
-      background-image: url('photos/bio.jpg');
-    }
+    .social-icon svg { width: 32px; height: 32px; fill: var(--white); }
+    .section-label { font-family: 'Montserrat', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(248,247,244,0.45); margin-bottom: 28px; }
+    #bio { background-image: url('photos/bio.jpg'); }
     #bio::before { background: var(--overlay-bio); }
-    .bio-text {
-      font-size: clamp(0.95rem, 2vw, 1.1rem);
-      line-height: 1.8;
-      color: var(--dim);
-      text-align: center;
-      max-width: 680px;
-      margin: 0 auto;
-    }
+    .bio-text { font-size: clamp(0.95rem, 2vw, 1.1rem); line-height: 1.8; color: var(--dim); text-align: center; max-width: 680px; margin: 0 auto; }
     .bio-text p + p { margin-top: 20px; }
-
-    /* ── SINGLE ── */
-    #single {
-      background-image: url('photos/single.jpg');
-    }
+    #single { background-image: url('photos/single.jpg'); }
     #single::before { background: var(--overlay-mid); }
-    .single-card {
-      background: var(--glass);
-      border: 1px solid var(--glass-border);
-      border-radius: 14px;
-      padding: 24px 28px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      text-decoration: none;
-      transition: background 0.2s;
-    }
+    .single-card { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 14px; padding: 24px 28px; display: flex; align-items: center; justify-content: space-between; gap: 20px; text-decoration: none; transition: background 0.2s; }
     .single-card:hover { background: rgba(14,13,11,0.65); }
-    .single-label {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(248,247,244,0.45);
-      margin-bottom: 8px;
-    }
-    .single-title {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.7rem;
-      font-weight: 700;
-      color: var(--white);
-    }
-    .play-btn {
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      border: 1.5px solid rgba(255,255,255,0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
+    .single-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(248,247,244,0.45); margin-bottom: 8px; }
+    .single-title { font-family: 'Montserrat', sans-serif; font-size: 1.7rem; font-weight: 700; color: var(--white); }
+    .play-btn { width: 52px; height: 52px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.3); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .play-btn svg { width: 18px; height: 18px; fill: var(--white); margin-left: 3px; }
-
-    /* ── GIGS ── */
-    #gigs {
-      background-image: url('photos/gigs.jpg');
-    }
+    #gigs { background-image: url('photos/gigs.jpg'); }
     #gigs::before { background: var(--overlay-heavy); }
-    .gig-card {
-      background: var(--glass);
-      border: 1px solid var(--glass-border);
-      border-radius: 12px;
-      padding: 20px 24px;
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      margin-bottom: 14px;
-      text-decoration: none;
-      transition: background 0.2s;
-    }
+    .gig-card { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 12px; padding: 20px 24px; display: flex; align-items: center; gap: 24px; margin-bottom: 14px; text-decoration: none; transition: background 0.2s; }
     .gig-card:hover { background: rgba(14,13,11,0.65); }
-    .gig-date {
-      text-align: center;
-      min-width: 44px;
-    }
-    .gig-day {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: var(--white);
-      line-height: 1;
-    }
-    .gig-mon {
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(248,247,244,0.4);
-      margin-top: 3px;
-    }
+    .gig-date { text-align: center; min-width: 44px; }
+    .gig-day { font-family: 'Montserrat', sans-serif; font-size: 1.6rem; font-weight: 700; color: var(--white); line-height: 1; }
+    .gig-mon { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(248,247,244,0.4); margin-top: 3px; }
     .gig-info { flex: 1; }
-    .gig-venue {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--white);
-    }
-    .gig-sub {
-      font-size: 0.85rem;
-      color: var(--dim);
-      margin-top: 4px;
-    }
-    .gig-ticket {
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: rgba(248,247,244,0.5);
-      letter-spacing: 0.05em;
-      white-space: nowrap;
-    }
-
-    /* ── WATCH ── */
-    #watch {
-      background-image: url('photos/watch.jpg');
-    }
+    .gig-venue { font-family: 'Montserrat', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--white); }
+    .gig-sub { font-size: 0.85rem; color: var(--dim); margin-top: 4px; }
+    .gig-ticket { font-size: 0.78rem; font-weight: 600; color: rgba(248,247,244,0.5); letter-spacing: 0.05em; white-space: nowrap; }
+    #watch { background-image: url('photos/watch.jpg'); }
     #watch::before { background: var(--overlay-heavy); }
-    .video-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-    .video-card {
-      border-radius: 12px;
-      overflow: hidden;
-      text-decoration: none;
-      display: block;
-    }
-    .video-thumb {
-      position: relative;
-      aspect-ratio: 16/9;
-      overflow: hidden;
-    }
-    .video-thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: brightness(0.65);
-      transition: filter 0.2s;
-    }
+    .video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .video-card { border-radius: 12px; overflow: hidden; text-decoration: none; display: block; }
+    .video-thumb { position: relative; aspect-ratio: 16/9; overflow: hidden; }
+    .video-thumb img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.65); transition: filter 0.2s; }
     .video-card:hover .video-thumb img { filter: brightness(0.8); }
-    .video-play {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .video-play-btn {
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.92);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+    .video-play { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+    .video-play-btn { width: 52px; height: 52px; border-radius: 50%; background: rgba(255,255,255,0.92); display: flex; align-items: center; justify-content: center; }
     .video-play-btn svg { width: 18px; height: 18px; fill: #0f0e0c; margin-left: 3px; }
-    .video-title {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.82rem;
-      font-weight: 700;
-      color: var(--white);
-      margin-top: 10px;
-      line-height: 1.4;
-    }
-
-    /* ── GALLERY ── */
-    #gallery {
-      background-image: url('photos/gallery-bg.jpg');
-    }
+    .video-title { font-family: 'Montserrat', sans-serif; font-size: 0.82rem; font-weight: 700; color: var(--white); margin-top: 10px; line-height: 1.4; }
+    #gallery { background-image: url('photos/gallery-bg.jpg'); }
     #gallery::before { background: rgba(0,0,0,0.80); }
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-    }
-    .gallery-grid img {
-      width: 100%;
-      aspect-ratio: 4/3;
-      object-fit: cover;
-      border-radius: 10px;
-      display: block;
-      transition: opacity 0.2s;
-    }
+    .gallery-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .gallery-grid img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 10px; display: block; transition: opacity 0.2s; }
     .gallery-grid img:hover { opacity: 0.85; }
-
-    /* ── SHOP ── */
-    #shop {
-      background-image: url('photos/shop.jpg');
-    }
+    #shop { background-image: url('photos/shop.jpg'); }
     #shop::before { background: var(--overlay-mid); }
-    .shop-btn {
-      display: block;
-      width: 100%;
-      padding: 22px;
-      background: var(--white);
-      color: var(--dark);
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1rem;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      text-align: center;
-      text-decoration: none;
-      border-radius: 10px;
-      transition: opacity 0.2s;
-    }
+    .shop-btn { display: block; width: 100%; padding: 22px; background: var(--white); color: var(--dark); font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 700; letter-spacing: 0.05em; text-align: center; text-decoration: none; border-radius: 10px; transition: opacity 0.2s; }
     .shop-btn:hover { opacity: 0.9; }
-
-    /* ── CONTACT ── */
-    #contact {
-      background-image: url('photos/single.jpg');
-      background-position: center 30%;
-    }
+    #contact { background-image: url('photos/single.jpg'); background-position: center 30%; }
     #contact::before { background: var(--overlay-heavy); }
     .contact-form { display: flex; flex-direction: column; gap: 12px; }
-    .contact-form input,
-    .contact-form textarea {
-      width: 100%;
-      padding: 16px 18px;
-      background: var(--glass);
-      border: 1px solid var(--glass-border);
-      border-radius: 8px;
-      color: var(--white);
-      font-family: 'Inter', sans-serif;
-      font-size: 0.95rem;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-    .contact-form input::placeholder,
-    .contact-form textarea::placeholder { color: rgba(248,247,244,0.35); }
-    .contact-form input:focus,
-    .contact-form textarea:focus { border-color: rgba(255,255,255,0.35); }
+    .contact-form input, .contact-form textarea { width: 100%; padding: 16px 18px; background: var(--glass); border: 1px solid var(--glass-border); border-radius: 8px; color: var(--white); font-family: 'Inter', sans-serif; font-size: 0.95rem; outline: none; transition: border-color 0.2s; }
+    .contact-form input::placeholder, .contact-form textarea::placeholder { color: rgba(248,247,244,0.35); }
+    .contact-form input:focus, .contact-form textarea:focus { border-color: rgba(255,255,255,0.35); }
     .contact-form textarea { height: 130px; resize: none; }
-    .contact-form button {
-      width: 100%;
-      padding: 18px;
-      background: var(--white);
-      color: var(--dark);
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 700;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      letter-spacing: 0.05em;
-      transition: opacity 0.2s;
-    }
+    .contact-form button { width: 100%; padding: 18px; background: var(--white); color: var(--dark); font-family: 'Montserrat', sans-serif; font-size: 0.95rem; font-weight: 700; border: none; border-radius: 8px; cursor: pointer; letter-spacing: 0.05em; transition: opacity 0.2s; }
     .contact-form button:hover { opacity: 0.9; }
-
-    /* ── FOOTER ── */
-    #footer {
-      background-image: url('photos/footer.jpg');
-    }
+    #footer { background-image: url('photos/footer.jpg'); }
     #footer::before { background: var(--overlay-heavy); }
-    #footer .section-inner {
-      padding: 48px 32px;
-      text-align: center;
-    }
-    .footer-label {
-      font-size: 1rem;
-      color: var(--dim);
-      margin-bottom: 20px;
-    }
-    .footer-form {
-      display: flex;
-      gap: 8px;
-      max-width: 420px;
-      margin: 0 auto;
-    }
-    .footer-form input {
-      flex: 1;
-      padding: 14px 16px;
-      background: var(--glass);
-      border: 1px solid var(--glass-border);
-      border-radius: 8px;
-      color: var(--white);
-      font-family: 'Inter', sans-serif;
-      font-size: 0.9rem;
-      outline: none;
-    }
+    #footer .section-inner { padding: 48px 32px; text-align: center; }
+    .footer-label { font-size: 1rem; color: var(--dim); margin-bottom: 20px; }
+    .footer-form { display: flex; gap: 8px; max-width: 420px; margin: 0 auto; }
+    .footer-form input { flex: 1; padding: 14px 16px; background: var(--glass); border: 1px solid var(--glass-border); border-radius: 8px; color: var(--white); font-family: 'Inter', sans-serif; font-size: 0.9rem; outline: none; }
     .footer-form input::placeholder { color: rgba(248,247,244,0.35); }
-    .footer-form button {
-      padding: 14px 22px;
-      background: var(--white);
-      color: var(--dark);
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 700;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      letter-spacing: 0.05em;
-      white-space: nowrap;
-      transition: opacity 0.2s;
-    }
+    .footer-form button { padding: 14px 22px; background: var(--white); color: var(--dark); font-family: 'Montserrat', sans-serif; font-size: 0.85rem; font-weight: 700; border: none; border-radius: 8px; cursor: pointer; letter-spacing: 0.05em; white-space: nowrap; transition: opacity 0.2s; }
     .footer-form button:hover { opacity: 0.9; }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 600px) {
-      .section { background-attachment: scroll; }
-      .video-grid { grid-template-columns: 1fr; }
-      .gallery-grid { gap: 6px; }
-      .footer-form { flex-direction: column; }
-      .hero-bottom { gap: 22px; }
-      .gig-card { flex-wrap: wrap; }
-    }
+    @media (max-width: 600px) { .video-grid { grid-template-columns: 1fr; } .gallery-grid { gap: 6px; } .footer-form { flex-direction: column; } .hero-bottom { gap: 22px; } .gig-card { flex-wrap: wrap; } }
   </style>
 </head>
 <body>
-
-<!-- ══ HERO ══ -->
 <section id="hero" class="section">
   <div class="hero-top">
     <img src="photos/logo.png" alt="Twisted Fix" class="hero-logo">
@@ -459,30 +100,13 @@
     <p class="hero-tagline">And when all is said and done, who lays you bare, my Twisted Fix?</p>
   </div>
   <div class="hero-bottom">
-    <!-- Spotify -->
-    <a href="https://open.spotify.com/artist/0kji229xE6M66ekI8nYsXS" target="_blank" class="social-icon" aria-label="Spotify">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
-    </a>
-    <!-- Apple Music -->
-    <a href="https://music.apple.com/au/artist/twisted-fix/1762609599" target="_blank" class="social-icon" aria-label="Apple Music">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.994 6.124a9.23 9.23 0 00-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 00-1.877-.726 10.496 10.496 0 00-1.564-.15c-.04-.003-.083-.01-.124-.013H5.986c-.152.01-.303.017-.455.026C4.786.07 4.043.15 3.34.428 2.004.958 1.04 1.88.475 3.208A8.372 8.372 0 00.09 5.19 42.6 42.6 0 000 6.996v10.01c.012.303.026.606.05.907.187 2.006 1.13 3.535 2.93 4.435.94.464 1.955.64 2.994.666h12.06c.87-.02 1.73-.156 2.537-.493 1.98-.833 3.1-2.326 3.38-4.46.065-.49.082-.985.086-1.478V6.57c-.005-.15-.01-.298-.043-.446zM11.977 17.5c-2.763 0-5-2.239-5-5s2.237-5 5-5c2.761 0 5 2.239 5 5s-2.239 5-5 5zm5.109-9.114a1.16 1.16 0 110-2.32 1.16 1.16 0 010 2.32zm-5.109 1.614a3.5 3.5 0 100 7 3.5 3.5 0 000-7z"/></svg>
-    </a>
-    <!-- Instagram -->
-    <a href="https://www.instagram.com/twistedfix_band" target="_blank" class="social-icon" aria-label="Instagram">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-    </a>
-    <!-- YouTube -->
-    <a href="https://www.youtube.com/@TwistedFix" target="_blank" class="social-icon" aria-label="YouTube">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
-    </a>
-    <!-- Facebook -->
-    <a href="https://www.facebook.com/profile.php?id=61560849431270" target="_blank" class="social-icon" aria-label="Facebook">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-    </a>
+    <a href="https://open.spotify.com/artist/0kji229xE6M66ekI8nYsXS" target="_blank" class="social-icon" aria-label="Spotify"><svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg></a>
+    <a href="https://music.apple.com/au/artist/twisted-fix/1762609599" target="_blank" class="social-icon" aria-label="Apple Music"><svg viewBox="0 0 24 24"><path d="M23.994 6.124a9.23 9.23 0 00-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 00-1.877-.726 10.496 10.496 0 00-1.564-.15c-.04-.003-.083-.01-.124-.013H5.986c-.152.01-.303.017-.455.026C4.786.07 4.043.15 3.34.428 2.004.958 1.04 1.88.475 3.208A8.372 8.372 0 00.09 5.19 42.6 42.6 0 000 6.996v10.01c.012.303.026.606.05.907.187 2.006 1.13 3.535 2.93 4.435.94.464 1.955.64 2.994.666h12.06c.87-.02 1.73-.156 2.537-.493 1.98-.833 3.1-2.326 3.38-4.46.065-.49.082-.985.086-1.478V6.57c-.005-.15-.01-.298-.043-.446zM11.977 17.5c-2.763 0-5-2.239-5-5s2.237-5 5-5c2.761 0 5 2.239 5 5s-2.239 5-5 5zm5.109-9.114a1.16 1.16 0 110-2.32 1.16 1.16 0 010 2.32zm-5.109 1.614a3.5 3.5 0 100 7 3.5 3.5 0 000-7z"/></svg></a>
+    <a href="https://www.instagram.com/twistedfix_band" target="_blank" class="social-icon" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+    <a href="https://www.youtube.com/@TwistedFix" target="_blank" class="social-icon" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg></a>
+    <a href="https://www.facebook.com/profile.php?id=61560849431270" target="_blank" class="social-icon" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
   </div>
 </section>
-
-<!-- ══ BIO ══ -->
 <section id="bio" class="section">
   <div class="section-inner">
     <div class="bio-text">
@@ -491,8 +115,6 @@
     </div>
   </div>
 </section>
-
-<!-- ══ LATEST SINGLE ══ -->
 <section id="single" class="section">
   <div class="section-inner">
     <p class="section-label">Latest release</p>
@@ -501,74 +123,40 @@
         <p class="single-label">Out now · Listen on Spotify</p>
         <p class="single-title">MadHouse</p>
       </div>
-      <div class="play-btn">
-        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-      </div>
+      <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
     </a>
   </div>
 </section>
-
-<!-- ══ GIGS ══ -->
 <section id="gigs" class="section">
   <div class="section-inner">
     <p class="section-label">Upcoming gigs</p>
     <a href="https://theworkersclub.oztix.com.au/outlet/event/341e9c67-9794-4c05-8506-c996a2c2610e" target="_blank" class="gig-card">
-      <div class="gig-date">
-        <div class="gig-day">26</div>
-        <div class="gig-mon">Jun</div>
-      </div>
-      <div class="gig-info">
-        <div class="gig-venue">Workers Club, Fitzroy</div>
-        <div class="gig-sub">Friday 26 June</div>
-      </div>
+      <div class="gig-date"><div class="gig-day">26</div><div class="gig-mon">Jun</div></div>
+      <div class="gig-info"><div class="gig-venue">Workers Club, Fitzroy</div><div class="gig-sub">Friday 26 June</div></div>
       <div class="gig-ticket">Get tickets →</div>
     </a>
     <a href="https://tickets.oztix.com.au/outlet/event/f913124c-a5b6-48ab-b542-90cd31c8c6b8" target="_blank" class="gig-card">
-      <div class="gig-date">
-        <div class="gig-day">24</div>
-        <div class="gig-mon">Jul</div>
-      </div>
-      <div class="gig-info">
-        <div class="gig-venue">Cactus Room, Thornbury</div>
-        <div class="gig-sub">Friday 24 July</div>
-      </div>
+      <div class="gig-date"><div class="gig-day">24</div><div class="gig-mon">Jul</div></div>
+      <div class="gig-info"><div class="gig-venue">Cactus Room, Thornbury</div><div class="gig-sub">Friday 24 July</div></div>
       <div class="gig-ticket">Get tickets →</div>
     </a>
   </div>
 </section>
-
-<!-- ══ WATCH ══ -->
 <section id="watch" class="section">
   <div class="section-inner">
     <p class="section-label">Watch</p>
     <div class="video-grid">
       <a href="https://www.youtube.com/watch?v=pprC6IDX2xo" target="_blank" class="video-card">
-        <div class="video-thumb">
-          <img src="https://img.youtube.com/vi/pprC6IDX2xo/maxresdefault.jpg" alt="Pilate Tuesday">
-          <div class="video-play">
-            <div class="video-play-btn">
-              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-            </div>
-          </div>
-        </div>
+        <div class="video-thumb"><img src="https://img.youtube.com/vi/pprC6IDX2xo/maxresdefault.jpg" alt="Pilate Tuesday"><div class="video-play"><div class="video-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div></div>
         <p class="video-title">Pilate Tuesday (Official Music Video)</p>
       </a>
       <a href="https://www.youtube.com/watch?v=yVwZxRSWgdQ" target="_blank" class="video-card">
-        <div class="video-thumb">
-          <img src="https://img.youtube.com/vi/yVwZxRSWgdQ/maxresdefault.jpg" alt="Gimme A Reason">
-          <div class="video-play">
-            <div class="video-play-btn">
-              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-            </div>
-          </div>
-        </div>
+        <div class="video-thumb"><img src="https://img.youtube.com/vi/yVwZxRSWgdQ/maxresdefault.jpg" alt="Gimme A Reason"><div class="video-play"><div class="video-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div></div>
         <p class="video-title">Gimme A Reason (Official Music Video)</p>
       </a>
     </div>
   </div>
 </section>
-
-<!-- ══ GALLERY ══ -->
 <section id="gallery" class="section">
   <div class="section-inner">
     <p class="section-label">Gallery</p>
@@ -584,16 +172,12 @@
     </div>
   </div>
 </section>
-
-<!-- ══ SHOP ══ -->
 <section id="shop" class="section">
   <div class="section-inner">
     <p class="section-label">Shop</p>
     <a href="https://twistedfixband.bandcamp.com/merch" target="_blank" class="shop-btn">Visit Bandcamp store</a>
   </div>
 </section>
-
-<!-- ══ CONTACT ══ -->
 <section id="contact" class="section">
   <div class="section-inner">
     <p class="section-label">Get in touch</p>
@@ -605,8 +189,6 @@
     </form>
   </div>
 </section>
-
-<!-- ══ FOOTER / MAILING LIST ══ -->
 <section id="footer" class="section">
   <div class="section-inner">
     <p class="footer-label">Join the mailing list</p>
@@ -616,6 +198,5 @@
     </form>
   </div>
 </section>
-
 </body>
 </html>
